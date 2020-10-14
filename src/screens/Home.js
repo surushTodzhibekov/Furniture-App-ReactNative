@@ -1,12 +1,13 @@
 import React from "react";
 import { View, StyleSheet, Text, ImageBackground, Image } from "react-native";
-import { ScrollView, TextInput } from "react-native-gesture-handler";
-import { Ionicons } from "@expo/vector-icons";
+import { ScrollView } from "react-native-gesture-handler";
+
 import Couches from "../common/Couches";
-import { NavigationContainer } from "@react-navigation/native";
 
 import New from "../common/New";
 import Best from "../common/Best";
+import Search from "../common/Search";
+import Header from "../common/Header";
 
 function Home({ navigation }) {
   return (
@@ -17,41 +18,19 @@ function Home({ navigation }) {
         paddingHorizontal: 20,
       }}
     >
-      <View
-        style={{
-          flexDirection: "row",
-          width: "100%",
-          alignItems: "center",
-          marginTop: 40,
-        }}
-      >
-        <View style={{ width: "50%" }}>
-          <Text style={styles.heading}>Furniture</Text>
-        </View>
-        <View style={{ width: "50%", alignItems: "flex-end" }}>
-          <Image
-            source={require("../images/bag-2.png")}
-            style={styles.subImage}
-          />
-        </View>
+      {/** Start of header */}
+      <View style={styles.header}>
+        <Header />
       </View>
+      {/** End of headers */}
+
       {/** Search */}
       <View style={styles.container}>
-        <View style={styles.subContainer}>
-          <Ionicons name="ios-search" size={22} color="#4f4a4a" />
-          <TextInput
-            placeholder="Search unique furniture..."
-            style={styles.search}
-          />
-        </View>
-        <View style={styles.imageSort}>
-          <Image
-            source={require("../images/sort.png")}
-            style={styles.subImage}
-          />
-        </View>
+        <Search />
       </View>
+      {/** end of Search */}
 
+      {/** Start of Modern */}
       <View style={styles.modern}>
         <Text style={styles.text}>Modern</Text>
         <View style={styles.subModern}></View>
@@ -65,6 +44,7 @@ function Home({ navigation }) {
           Good quality items
         </Text>
       </View>
+      {/** End of Modern */}
 
       {/**Couches */}
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -87,15 +67,7 @@ function Home({ navigation }) {
       {/** New Arrivals */}
       <View style={styles.arrival}>
         <Text style={styles.arrivalText}>New Arrivals</Text>
-        <View
-          style={{
-            height: 5,
-            width: 5,
-            borderRadius: 5,
-            backgroundColor: "#4f4a4a",
-            marginHorizontal: 4,
-          }}
-        ></View>
+        <View style={styles.subArrivals}></View>
         <Text
           style={{
             fontFamily: "montserrat-bold",
@@ -139,47 +111,20 @@ const styles = StyleSheet.create({
     marginVertical: 30,
     width: "100%",
   },
-  subContainer: {
+
+  header: {
     flexDirection: "row",
+    width: "100%",
     alignItems: "center",
-    backgroundColor: "#fff",
-    elevation: 2,
-    width: "85%",
-    height: 35,
-    paddingHorizontal: 20,
-    borderRadius: 10,
-    marginLeft: 1,
+    marginTop: 40,
   },
-  search: {
-    fontFamily: "Montserrat-medium",
-    fontSize: 12,
-    paddingHorizontal: 12,
-  },
-  heading: {
-    fontFamily: "montserrat-bold",
-    fontSize: 22,
-  },
+
   text: {
     fontFamily: "montserrat-bold",
     fontSize: 18,
     color: "#4f4a4a",
   },
-  imageSort: {
-    flexDirection: "row",
-    alignItems: "center",
-    elevation: 2,
-    width: "15%",
-    backgroundColor: "#FFF",
-    marginHorizontal: 5,
-    height: 35,
-    borderRadius: 10,
-    marginLeft: 1,
-    justifyContent: "center",
-  },
-  subImage: {
-    width: 16,
-    height: 20,
-  },
+
   modern: {
     flexDirection: "row",
     alignItems: "center",
@@ -202,6 +147,13 @@ const styles = StyleSheet.create({
     fontFamily: "montserrat-bold",
     fontSize: 20,
     color: "#4f4a4a",
+  },
+  subArrivals: {
+    height: 5,
+    width: 5,
+    borderRadius: 5,
+    backgroundColor: "#4f4a4a",
+    marginHorizontal: 4,
   },
 });
 
